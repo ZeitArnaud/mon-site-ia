@@ -20,21 +20,25 @@ if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 
 METIERS = {
-    "Santé": ["médecin", "hôpital", "santé", "diagnostic", "imagerie"],
-    "Droit": ["avocat", "juridique", "loi", "justice", "tribunal"],
-    "BTP": ["architecture", "construction", "bâtiment", "chantier"],
-    "Éducation": ["école", "professeur", "université", "cours"]
+    "Santé": ["médecin", "hôpital", "santé", "diagnostic", "imagerie", "patient", "chirurgie", "médical", "soins"],
+    "Droit": ["avocat", "juridique", "loi", "justice", "contrat", "procès", "tribunal", "notaire", "jurisprudence"],
+    "BTP": ["architecture", "construction", "bâtiment", "chantier", "urbanisme", "plan", "immobilier", "maçon"],
+    "Éducation": ["école", "professeur", "élève", "apprentissage", "université", "cours", "pédagogie", "formation"],
+    "Finance": ["banque", "bourse", "investissement", "comptabilité", "crypto", "trading", "économie", "audit"],
+    "Marketing": ["publicité", "réseaux sociaux", "vente", "influence", "e-commerce", "client", "stratégie digitale"],
+    "Agriculture": ["ferme", "agriculteur", "récolte", "élevage", "culture", "tracteur", "agronomie"]
 }
 
 def envoyer_a_supabase(article):
-    """Envoie un article vers ta base de données"""
     endpoint = f"{SUPABASE_URL}/rest/v1/{TABLE_NAME}"
     headers = {
         "apikey": SUPABASE_KEY,
         "Authorization": f"Bearer {SUPABASE_KEY}",
         "Content-Type": "application/json",
-        "Prefer": "return=minimal"
+        "Prefer": "resolution=merge-duplicates" # <--- Ajoute cette ligne magique !
     }
+    # Pour que cela fonctionne, il faut que ta colonne "link" soit une "Unique Key" dans Supabase
+    # Sinon, on peut simplement faire une recherche avant l'insert.
     
     try:
         response = requests.post(endpoint, headers=headers, json=article)
