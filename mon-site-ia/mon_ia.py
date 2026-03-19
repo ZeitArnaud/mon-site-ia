@@ -28,7 +28,9 @@ METIERS = {
 # Nos sources de news (on peut en ajouter d'autres ici)
 SOURCES = [
     "https://www.lemonde.fr/pixels/rss_full.xml",
-    "https://www.actuia.com/actualite/intelligence-artificielle/feed/"
+    "https://www.actuia.com/actualite/intelligence-artificielle/feed/",
+    "https://intelligence-artificielle.com/feed/",
+    "https://www.zdnet.fr/feeds/rss/actualites/intelligence-artificielle-3900003001.htm"
 ]
 
 def envoyer_a_supabase(article):
