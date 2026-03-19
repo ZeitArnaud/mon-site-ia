@@ -15,7 +15,7 @@ if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 
 METIERS = {
-    "Santé": ["médecin", "hôpital", "santé", "diagnostic", "imagerie", "patient", "chirurgie", "médical", "soins", "cancer", "clinique"],
+    "Santé": ["le", "médecin", "hôpital", "santé", "diagnostic", "imagerie", "patient", "chirurgie", "médical", "soins", "cancer", "clinique"],
     "Droit": ["avocat", "juridique", "loi", "justice", "contrat", "procès", "tribunal", "notaire", "jurisprudence", "magistrat"],
     "BTP": ["architecture", "construction", "bâtiment", "chantier", "urbanisme", "plan", "immobilier", "maçon", "travaux"],
     "Éducation": ["école", "professeur", "élève", "apprentissage", "université", "cours", "pédagogie", "formation", "lycée", "collège"],
